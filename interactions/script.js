@@ -3,18 +3,18 @@
 // ==================================
 
 const signFiles = {
-  'one-way': '../sign_vector/Sign1.png',
-  'stop': '../sign_vector/Sign2.png',
-  'enter': '../sign_vector/Sign3.png',
-  'caution': '../sign_vector/Sign4.png',
-  'notice': '../sign_vector/Sign5.png',
-  'do-not-enter': '../sign_vector/Sign6.png',
-  'exit': '../sign_vector/Sign7.png',
-  'wait': '../sign_vector/Sign8.png',
-  'walk': '../sign_vector/Sign9.png',
-  'keep-left': '../sign_vector/Sign10.png',
-  'pull': '../sign_vector/Sign11.png',
-  'push': '../sign_vector/Sign12.png'
+  'one-way': '../sign_vector/sign1.png',
+  'stop': '../sign_vector/sign2.png',
+  'enter': '../sign_vector/sign3.png',
+  'caution': '../sign_vector/sign4.png',
+  'notice': '../sign_vector/sign5.png',
+  'do-not-enter': '../sign_vector/sign6.png',
+  'exit': '../sign_vector/sign7.png',
+  'wait': '../sign_vector/sign8.png',
+  'walk': '../sign_vector/sign9.png',
+  'keep-left': '../sign_vector/sign10.png',
+  'pull': '../sign_vector/sign11.png',
+  'push': '../sign_vector/sign12.png'
 };
 
 
