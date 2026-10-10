@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Why Did I Do This?</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+</head>
+
+<body>
+
+  <!-- ==================================
+       NAVIGATION
+  ================================== -->
+
+  <nav class="top-nav">
+
+    <a
+      href="../index.html"
+      class="nav-link nav-left"
+    >
+      <span class="nav-arrow">⬅</span>
+      <span>CHOOSE AGAIN</span>
+    </a>
+
+    <div class="nav-center">
+      FOLLOW INSTRUCTIONS
+    </div>
+
+    <a
+      href="index.html"
+      class="nav-link nav-right"
+    >
+      <span>LOOK CLOSER</span>
+      <span class="nav-arrow nav-arrow-right">⬅</span>
+    </a>
+
+  </nav>
+
+
+  <main class="about-stage">
+
+
+    <!-- ==================================
+         SCREEN 1
+    ================================== -->
+
+    <section
+      class="about-screen active"
+      data-screen="1"
+    >
+
+      <div class="screen-content">
+
+        <div class="eyebrow">
+          ABOUT THIS EXPERIENCE
+        </div>
+
+        <h1 class="page-title">
+          WHY DID YOU DO THAT?
+        </h1>
+
+
+        <div class="intro-copy">
+
+          <span class="intro-sentence">
+            You stopped.
+          </span>
+
+          <span class="intro-sentence">
+            You waited.
+          </span>
+
+          <span class="intro-sentence">
+            You clicked.
+          </span>
+
+          <span class="intro-sentence">
+            You followed arrows.
+          </span>
+
+          <span class="intro-sentence">
+            You trusted signs you had absolutely no reason to trust.
+          </span>
+
+        </div>
+
+
+        <p class="follow-up-copy">
+          And somehow, only now you’re asking why.
+        </p>
+
+
+        <button
+          class="about-button intro-button"
+          data-next="2"
+        >
+          FINE. EXPLAIN IT
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================
+         SCREEN 2 — CONCEPT
+    ================================== -->
+
+    <section
+      class="about-screen"
+      data-screen="2"
+    >
+
+      <div class="screen-content">
+
+        <div class="eyebrow">
+          THE ACTUAL EXPLANATION
+        </div>
+
+
+        <div class="concept-statement">
+
+          <h1
+            class="concept-title"
+            id="conceptWrong"
+          >
+            YOU THOUGHT YOU WERE NAVIGATING
+            THE WEBSITE.
+          </h1>
+
+
+          <h2
+            class="concept-correction"
+            id="conceptCorrect"
+          >
+            BUT ACTUALLY, THE WEBSITE
+            WAS NAVIGATING YOU.
+          </h2>
+
+        </div>
+
+
+        <div
+          class="concept-body"
+          id="conceptBody"
+        >
+
+          <p class="concept-copy">
+            Think about how many times a day something tells you what to do:
+            stop here, walk now, wait there, enter this way, don’t go that way.
+          </p>
+
+          <p class="concept-copy">
+            Most of the time, we don’t stop to question any of it.
+            We see the instruction, understand the visual cue, and respond.
+          </p>
+
+          <p class="concept-copy">
+            In a city, these commands become so familiar that responding to
+            them starts to feel automatic. We stop, move, wait, enter, and leave
+            without really thinking about what is directing us.
+          </p>
+
+
+          <button
+            class="about-button"
+            data-next="3"
+          >
+            TELL ME HOW
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================
+         SCREEN 3 — OBEDIENCE REPORT
+    ================================== -->
+
+    <section
+      class="about-screen"
+      data-screen="3"
+    >
+
+      <div class="screen-content report-content">
+
+        <div class="eyebrow">
+          USER ANALYSIS COMPLETE
+        </div>
+
+        <h1 class="report-title">
+          YOUR OBEDIENCE REPORT
+        </h1>
+
+
+        <div class="report-box">
+
+          <div class="report-row">
+            <span>INSTRUCTIONS FOLLOWED</span>
+            <span class="report-value">94%</span>
+          </div>
+
+          <div class="report-row">
+            <span>QUESTIONS ASKED</span>
+            <span class="report-value">0</span>
+          </div>
+
+          <div class="report-row">
+            <span>UNNECESSARY CLICKS</span>
+            <span class="report-value">SEVERAL</span>
+          </div>
+
+          <div class="report-row">
+            <span>TRUST IN RANDOM SIGNS</span>
+            <span class="report-value">CONCERNING</span>
+          </div>
+
+          <div class="report-row">
+            <span>PATIENCE</span>
+            <span class="report-value">QUESTIONABLE</span>
+          </div>
+
+          <div class="report-row">
+            <span>FREE WILL REMAINING</span>
+            <span class="report-value">DEBATABLE</span>
+          </div>
+
+        </div>
+
+
+        <div class="result-box">
+
+          <div class="result-label">
+            FINAL RESULT
+          </div>
+
+          <div class="result-text">
+            EXTREMELY COOPERATIVE
+          </div>
+
+          <p>
+            Honestly, we barely had to try.
+          </p>
+
+        </div>
+
+
+        <button
+          class="about-button"
+          data-next="4"
+        >
+          I HAVE SOMETHING TO SAY
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================
+         SCREEN 4 — FINAL INTERACTION
+    ================================== -->
+
+    <section
+      class="about-screen"
+      data-screen="4"
+    >
+
+      <div class="screen-content question-content">
+
+        <div class="eyebrow">
+          BE HONEST
+        </div>
+
+        <h1 class="question-title">
+          DID YOU ACTUALLY QUESTION
+          <br>
+          ANY OF THE INSTRUCTIONS?
+        </h1>
+
+
+        <div
+          class="choice-row"
+          id="firstQuestionChoices"
+        >
+
+          <button
+            class="choice-button"
+            id="questionYes"
+          >
+            YES, OBVIOUSLY
+          </button>
+
+          <button
+            class="choice-button"
+            id="questionNo"
+          >
+            NOT REALLY
+          </button>
+
+        </div>
+
+
+        <div
+          class="choice-response"
+          id="questionResponse"
+        ></div>
+
+
+        <!-- FINAL MESSAGE APPEARS AFTER RESPONSE -->
+
+        <div
+  class="final-answer hidden"
+  id="finalAnswer"
+>
+
+  <a
+    href="../index.html"
+    class="return-button"
+  >
+    GO FOLLOW MORE INSTRUCTIONS
+  </a>
+
+  <p class="tiny-joke">
+    See? You did it again.
+  </p>
+
+</div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

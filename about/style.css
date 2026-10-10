@@ -1,0 +1,893 @@
+/* ==================================
+   RESET
+================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+
+  background: #080808;
+  color: #ffe600;
+
+  font-family:
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  opacity: 0;
+
+  animation:
+    pageFadeIn 0.7s ease forwards;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* ==================================
+   NAVIGATION
+================================== */
+
+.top-nav {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 60px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr auto 1fr;
+
+  align-items: center;
+
+  padding: 0 30px;
+
+  background: #080808;
+
+  border-bottom:
+    1px solid rgba(255, 230, 0, 0.3);
+
+  z-index: 1000;
+}
+
+.nav-link {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 4px;
+
+  color: #ffe600;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  line-height: 1;
+
+  letter-spacing: 0.04em;
+
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+.nav-left {
+  justify-self: start;
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.nav-link:hover {
+  opacity: 0.75;
+
+  transform: scale(1.04);
+}
+
+.nav-center {
+  justify-self: center;
+
+  margin-top: 4px;
+
+  color: #ffe600;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  line-height: 1;
+
+  letter-spacing: 0.04em;
+}
+
+.nav-arrow {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #ffe600;
+
+  font-size: 19px;
+
+  line-height: 1;
+
+  transform-origin: center;
+}
+
+.nav-arrow-right {
+  transform: rotate(180deg);
+}
+
+
+/* ==================================
+   MAIN AREA
+================================== */
+
+.about-stage {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  padding-top: 60px;
+
+  overflow: hidden;
+}
+
+
+/* ==================================
+   SCREENS
+================================== */
+
+.about-screen {
+  position: absolute;
+
+  inset: 60px 0 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transform:
+    translateY(24px);
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(.22,.61,.36,1);
+}
+
+.about-screen.active {
+  opacity: 1;
+
+  pointer-events: auto;
+
+  transform: translateY(0);
+}
+
+.about-screen.leaving {
+  opacity: 0;
+
+  transform: translateY(-24px);
+}
+
+
+/* ==================================
+   CONTENT
+================================== */
+
+.screen-content {
+  width:
+    min(640px, 82vw);
+
+  margin: 0 auto;
+
+  text-align: left;
+}
+
+
+/* ==================================
+   EYEBROW
+================================== */
+
+.eyebrow {
+  margin-bottom: 11px;
+
+  color: #f01d13;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+}
+
+
+/* ==================================
+   SCREEN 1
+================================== */
+
+.page-title {
+  max-width: 640px;
+
+  color: #ffe600;
+
+  font-size: 38px;
+
+  line-height: 1.3;
+
+  font-weight: 700;
+
+  letter-spacing: -0.02em;
+
+  text-transform: uppercase;
+}
+
+
+/*
+   Each sentence now has much more
+   breathing room.
+*/
+
+.intro-copy {
+  max-width: 550px;
+
+  margin-top: 24px;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  line-height: 1.75;
+}
+
+.intro-sentence {
+  display: block;
+}
+
+.follow-up-copy {
+  max-width: 550px;
+
+  margin-top: 17px;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  line-height: 1.75;
+}
+
+.intro-button {
+  margin-top: 30px;
+}
+
+
+/* ==================================
+   CONCEPT SCREEN
+================================== */
+
+.concept-statement {
+  position: relative;
+
+  max-width: 490px;
+
+  margin-bottom: 28px;
+}
+
+
+/* FIRST STATEMENT */
+
+.concept-title {
+  position: relative;
+
+  display: inline-block;
+
+  max-width: 490px;
+
+  color: #ffe600;
+
+  font-size: 25px;
+
+  line-height: 1.5;
+
+  font-weight: 700;
+
+  letter-spacing: -0.015em;
+
+  text-transform: uppercase;
+}
+
+
+/* CROSS-OUT */
+
+.concept-title::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 52%;
+
+  width: 0;
+  height: 2px;
+
+  background: #f01d13;
+
+  transform:
+    translateY(-50%);
+
+  transition:
+    width 0.8s cubic-bezier(.22,.61,.36,1);
+}
+
+.concept-title.crossed::after {
+  width: 100%;
+}
+
+.concept-title.crossed {
+  opacity: 0.45;
+
+  transition:
+    opacity 0.4s ease;
+}
+
+
+/* CORRECTION */
+
+.concept-correction {
+  max-width: 490px;
+
+  margin-top: 16px;
+
+  color: white;
+
+  font-size: 25px;
+
+  line-height: 1.5;
+
+  font-weight: 700;
+
+  letter-spacing: -0.015em;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  transform:
+    translateY(10px);
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.concept-correction.show {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+
+/* ==================================
+   CONCEPT BODY
+================================== */
+
+.concept-body {
+  opacity: 0;
+
+  transform:
+    translateY(10px);
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.concept-body.show {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+.concept-copy {
+  max-width: 500px;
+
+  margin-top: 18px;
+
+  color: white;
+
+  font-size: 14.5px;
+
+  font-weight: 400;
+
+  line-height: 1.7;
+}
+
+
+/* ==================================
+   BUTTONS
+================================== */
+
+.about-button,
+.choice-button,
+.return-button {
+  margin-top: 27px;
+
+  padding:
+    10px 16px;
+
+  border:
+    2px solid #ffe600;
+
+  background:
+    transparent;
+
+  color:
+    #ffe600;
+
+  font-family:
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size:
+    13px;
+
+  font-weight:
+    700;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.03em;
+
+  cursor:
+    pointer;
+
+  text-decoration:
+    none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.about-button::after,
+.return-button::after {
+  content: "⬅";
+
+  display: inline-block;
+
+  margin-left: 8px;
+
+  font-size: 16px;
+
+  line-height: 1;
+
+  color: currentColor;
+
+  transform:
+    rotate(180deg);
+}
+
+.about-button:hover,
+.choice-button:hover,
+.return-button:hover {
+  background:
+    #ffe600;
+
+  color:
+    #080808;
+}
+
+
+/* ==================================
+   OBEDIENCE REPORT
+================================== */
+
+.report-title {
+  max-width: 640px;
+
+  color: #ffe600;
+
+  font-size: 35px;
+
+  line-height: 1.35;
+
+  font-weight: 700;
+
+  letter-spacing: -0.02em;
+
+  text-transform: uppercase;
+}
+
+.report-box {
+  width: 100%;
+
+  margin-top: 23px;
+
+  border-top:
+    1px solid rgba(255, 230, 0, 0.3);
+}
+
+.report-row {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  gap: 25px;
+
+  padding:
+    10px 0;
+
+  border-bottom:
+    1px solid rgba(255, 230, 0, 0.16);
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  line-height: 1.5;
+}
+
+.report-value {
+  color: #ffe600;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  text-align: right;
+}
+
+
+/* ==================================
+   FINAL RESULT
+================================== */
+
+.result-box {
+  width: 100%;
+
+  margin-top: 19px;
+
+  padding:
+    14px 16px;
+
+  border:
+    1px solid rgba(255, 230, 0, 0.45);
+}
+
+.result-label {
+  color: #f01d13;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+.result-text {
+  margin-top: 7px;
+
+  color: #ffe600;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  line-height: 1.4;
+}
+
+.result-box p {
+  margin-top: 8px;
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  line-height: 1.65;
+}
+
+
+/* ==================================
+   FINAL QUESTION
+================================== */
+
+.question-content {
+  width:
+    min(680px, 84vw);
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.question-content .eyebrow {
+  text-align: center;
+}
+
+.question-title {
+  margin: 0 auto;
+
+  max-width: 680px;
+
+  color: #ffe600;
+
+  font-size: 28px;
+
+  line-height: 1.6;
+
+  font-weight: 700;
+
+  letter-spacing: -0.01em;
+
+  text-transform: uppercase;
+}
+
+
+/* ==================================
+   CHOICES
+================================== */
+
+.choice-row {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 11px;
+
+  margin-top: 30px;
+}
+
+.choice-button {
+  margin-top: 0;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  transform: none !important;
+}
+
+.choice-button:hover {
+  transform: none !important;
+}
+
+
+/* ==================================
+   RESPONSE
+================================== */
+
+.choice-response {
+  min-height: 24px;
+
+  margin-top: 24px;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  line-height: 1.7;
+
+  text-align: center;
+}
+
+
+/* ==================================
+   FINAL MESSAGE
+================================== */
+
+.final-answer {
+  margin-top: 28px;
+
+  text-align: center;
+
+  opacity: 0;
+
+  animation:
+    finalAnswerIn 0.5s ease forwards;
+}
+
+@keyframes finalAnswerIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+.final-instruction {
+  color: #ffe600;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  line-height: 1.6;
+
+  text-align: center;
+}
+
+.return-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  margin-top: 22px;
+}
+
+.tiny-joke {
+  margin-top: 15px;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  line-height: 1.7;
+
+  text-align: center;
+}
+
+
+/* ==================================
+   HIDDEN
+================================== */
+
+.hidden {
+  display: none !important;
+}
+
+
+/* ==================================
+   MOBILE
+================================== */
+
+@media (max-width: 700px) {
+
+  .top-nav {
+    padding:
+      0 18px;
+  }
+
+  .nav-link,
+  .nav-center {
+    font-size:
+      11px;
+  }
+
+  .about-screen {
+    padding:
+      30px 22px;
+  }
+
+  .screen-content {
+    width:
+      88vw;
+  }
+
+  .page-title {
+    font-size:
+      28px;
+  }
+
+  .concept-title,
+  .concept-correction {
+    font-size:
+      22px;
+  }
+
+  .report-title {
+    font-size:
+      27px;
+  }
+
+  .question-title {
+    font-size:
+      24px;
+
+    line-height:
+      1.55;
+  }
+
+  .intro-copy,
+  .follow-up-copy {
+    font-size:
+      14px;
+
+    line-height:
+      1.7;
+  }
+
+  .concept-copy {
+    font-size:
+      13px;
+
+    line-height:
+      1.7;
+  }
+
+  .report-row,
+  .report-value {
+    font-size:
+      11px;
+  }
+
+  .result-text {
+    font-size:
+      17px;
+  }
+
+  .tiny-joke {
+    font-size:
+      14px;
+  }
+}

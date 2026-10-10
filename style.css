@@ -1,0 +1,363 @@
+/* ==================================
+   GLOBAL
+================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gap: 0.1vmin;   /* space between signs (each sign gets this much padding) */
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+    background: #FBDE04;
+
+}
+
+/* ==================================
+   STAGE
+   The whole window. Signs are positioned in % of the screen.
+   Designed for a wide (16:9) window.
+================================== */
+.stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #FBDE04;
+}
+
+/* ==================================
+   SIGN BASE (shared by all signs)
+   Each sign sets these variables:
+   --w      width        --h     height
+   --top    top          --left  left
+   --rot    resting tilt (set 0deg for straight)
+   --anim   animation name
+   --dur    animation speed (seconds; smaller = faster)
+   --delay  start offset (negative = already mid-motion)
+   --ease   easing
+================================== */
+.sign {
+  position: absolute;
+  width: var(--w);
+  height: var(--h);
+  top: var(--top);
+  left: var(--left);
+  z-index: 1;
+  background: none;
+  border: none;
+  outline: none;
+  padding: var(--gap);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  animation: var(--anim) calc(var(--dur) * var(--speed, 1)) var(--ease, ease-in-out) var(--delay, 0s) infinite;
+  transition: opacity 0.3s ease;
+}
+
+.sign img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  rotate: var(--rot, 0deg);
+  transform: scale(1);
+  filter: brightness(1) saturate(1);
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* ==================================
+   SIGN LAYOUT / POSITIONING
+   All values are % of the screen.
+   Change width, height, top, left, tilt, animation, speed here.
+   The signs fit together like tiles, so if you resize one,
+   its neighbours need to move too.
+================================== */
+
+/* SIGN 1 — ONE WAY (top left) */
+.sign-1 {
+  --w: 28%;  --h: 22%;
+  --top: 0%; --left: 0%;
+  --rot: -1.5deg;
+  --anim: shake;  --dur: 0.5s;  --delay: -0.2s;  --ease: linear;
+}
+
+/* SIGN 2 — STOP (left, below ONE WAY) */
+.sign-2 {
+  --w: 20.4%;  --h: 35.3%;
+  --top: 14.2%; --left: 0%;
+  --rot: 2deg;
+  --anim: pulseDrift;  --dur: 1.6s;  --delay: -1s;
+}
+
+/* SIGN 3 — ENTER (top, tall) */
+.sign-3 {
+  --w: 24%;  --h: 68.9%;
+  --top: 0%; --left: 20.4%;
+  --rot: -1deg;
+  --anim: bounce;  --dur: 0.9s;  --delay: -0.5s;  --ease: ease-out;
+}
+
+/* SIGN 4 — CAUTION (top, tall) */
+.sign-4 {
+  --w: 25%;  --h: 60%;
+  --top: 48%; --left: 75%;
+  --rot: 1.5deg;
+  --anim: flicker;  --dur: 1.3s;  --delay: -0.8s;  --ease: steps(1, end);
+}
+
+/* SIGN 5 — NOTICE (top right) */
+.sign-5 {
+  --w: 32.3%;  --h: 50%;
+  --top: 0%; --left: 43%;
+  --rot: -1deg;
+  --anim: breathe;  --dur: 2.2s;  --delay: -1.5s;
+}
+
+/* SIGN 6 — DO NOT ENTER (bottom left, tall) */
+.sign-6 {
+  --w: 20.4%;  --h: 50.5%;
+  --top: 49.5%; --left: 0%;
+  --rot: -2deg;
+  --anim: tilt;  --dur: 1.5s;  --delay: -0.3s;
+}
+
+/* SIGN 7 — EXIT (big, wide) */
+.sign-7 {
+  --w: 40%;  --h: 30%;
+  --top: 72%; --left: 40%;
+  --rot: 1deg;
+  --anim: dash;  --dur: 2.2s;  --delay: -2s;
+}
+
+/* SIGN 8 — WAIT HERE (big circle, lower right) */
+.sign-8 {
+  --w: 28%;  --h: 45%;
+  --top: 40%; --left: 60%;
+  --rot: 3deg;
+  --anim: heartbeat;  --dur: 1.4s;  --delay: -0.9s;
+}
+
+/* SIGN 9 — PEDESTRIAN (medium, lower left of the group) */
+.sign-9 {
+  --w: 30%;  --h: 36%;
+  --top: 64%; --left: 18%;
+  --rot: -3deg;
+  --anim: strut;  --dur: 0.6s;  --delay: -0.6s;  --ease: ease-in-out;
+}
+
+/* SIGN 10 — KEEP LEFT (small) */
+.sign-10 {
+  --w: 30%;  --h: 44%;
+  --top: 2%; --left: 81.1%;
+  --rot: 2.5deg;
+  --anim: slideLeft;  --dur: 0.35s;  --delay: -0.1s;  --ease: linear;
+}
+
+/* SIGN 11 — PULL (medium-large, top of the group) */
+.sign-11 {
+  --w: 20%;  --h: 36%;
+  --top: 44%; --left: 44%;
+  --rot: 2deg;
+  --anim: pullTug;  --dur: 1.1s;  --delay: -0.7s;  --ease: ease-out;
+}
+
+/* SIGN 12 — PUSH (small, far corner) */
+.sign-12 {
+  --w: 15%;  --h: 40%;
+  --top: 5%; --left: 72%;
+  --rot: -2.5deg;
+  --anim: pushShove;  --dur: 1.1s;  --delay: -0.4s;  --ease: ease-out;
+}
+
+/* ==================================
+   ANIMATIONS
+   Distances use vmin so they scale with the screen.
+   Bigger numbers = more dramatic.
+================================== */
+
+/* SIGN 1: quick irregular shaking */
+@keyframes shake {
+  0%   { transform: translate(0, 0) rotate(0); filter: brightness(1); }
+  12%  { transform: translate(-1.2vmin, 0.6vmin) rotate(-4deg); filter: brightness(1.3); }
+  25%  { transform: translate(1.4vmin, -0.8vmin) rotate(3deg); filter: brightness(1); }
+  38%  { transform: translate(-1vmin, -0.6vmin) rotate(-3deg); filter: brightness(1.25); }
+  52%  { transform: translate(1.2vmin, 1vmin) rotate(4deg); filter: brightness(1); }
+  68%  { transform: translate(-1.5vmin, 0.4vmin) rotate(-3deg); filter: brightness(1.3); }
+  84%  { transform: translate(0.9vmin, -0.7vmin) rotate(2deg); filter: brightness(1); }
+  100% { transform: translate(0, 0) rotate(0); filter: brightness(1); }
+}
+
+/* SIGN 2: pulse plus sideways movement */
+@keyframes pulseDrift {
+  0%, 100% { transform: translateX(0) scale(1); filter: saturate(1); }
+  50%      { transform: translateX(1.8vmin) scale(1.12); filter: saturate(1.5) brightness(1.2); }
+}
+
+/* SIGN 3: vertical bouncing */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  30%      { transform: translateY(-3vmin) scale(1.04); }
+  50%      { transform: translateY(0) scale(1); }
+  65%      { transform: translateY(-1.4vmin) scale(1.02); }
+  80%      { transform: translateY(0) scale(1); }
+}
+
+/* SIGN 4: flickering opacity (with a tiny jump) */
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  6%   { opacity: 0.15; transform: scale(1.04); }
+  10%  { opacity: 1; transform: scale(1); }
+  30%  { opacity: 0.4; }
+  34%  { opacity: 1; }
+  45%  { opacity: 0.1; transform: scale(1.05); }
+  49%  { opacity: 0.9; transform: scale(1); }
+  53%  { opacity: 0.2; }
+  58%  { opacity: 1; }
+  80%  { opacity: 0.5; }
+  84%  { opacity: 1; }
+}
+
+/* SIGN 5: slow growing and shrinking */
+@keyframes breathe {
+  0%, 100% { transform: scale(0.97) rotate(-0.8deg); }
+  50%      { transform: scale(1.07) rotate(0.8deg); }
+}
+
+/* SIGN 6: tilting left and right */
+@keyframes tilt {
+  0%, 100% { transform: rotate(-5deg) scale(1); }
+  50%      { transform: rotate(5deg) scale(1.05); }
+}
+
+/* SIGN 7 (EXIT): sits still, then dashes for the door with a flash */
+@keyframes dash {
+  0%, 55%, 100% { transform: translateX(0) scale(1); filter: brightness(1); }
+  62%  { transform: translateX(4vmin) scale(1.04); filter: brightness(1.5); }
+  68%  { transform: translateX(0.5vmin); filter: brightness(1); }
+  76%  { transform: translateX(3.5vmin) scale(1.03); filter: brightness(1.5); }
+  84%  { transform: translateX(-1vmin); filter: brightness(1); }
+}
+
+/* SIGN 8 (WAIT HERE): heartbeat pulse */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  10%  { transform: scale(1.14) rotate(-2deg); }
+  20%  { transform: scale(1); }
+  32%  { transform: scale(1.2) rotate(2deg); filter: brightness(1.4); }
+  48%  { transform: scale(1); filter: brightness(1); }
+  70%  { transform: scale(1.06) rotate(-1deg); }
+}
+
+/* SIGN 9 (PEDESTRIAN): fast strut, bouncing and swaying side to side */
+@keyframes strut {
+  0%, 100% { transform: translate(-1.2vmin, 0) rotate(-4deg); }
+  25%      { transform: translate(0, -1.6vmin) rotate(0deg); }
+  50%      { transform: translate(1.2vmin, 0) rotate(4deg); }
+  75%      { transform: translate(0, -1.6vmin) rotate(0deg); }
+}
+
+/* SIGN 10 (KEEP LEFT): slides left again and again while wiggling */
+@keyframes slideLeft {
+  0%, 100% { transform: translateX(0) rotate(5deg); }
+  50%      { transform: translateX(-2vmin) rotate(-5deg); }
+}
+
+/* SIGN 11 (PULL): sharp yank to the left */
+@keyframes pullTug {
+  0%, 100% { transform: translateX(0) rotate(0); filter: brightness(1); }
+  15%  { transform: translateX(-3vmin) rotate(-4deg) scale(1.07); filter: brightness(1.5); }
+  30%  { transform: translateX(0.8vmin) rotate(1deg); filter: brightness(1); }
+  45%  { transform: translateX(-1.8vmin) rotate(-2deg); }
+  60%  { transform: translateX(0); }
+}
+
+/* SIGN 12 (PUSH): hard shove to the right */
+@keyframes pushShove {
+  0%, 100% { transform: translateX(0) rotate(0); filter: brightness(1); }
+  15%  { transform: translateX(3vmin) rotate(4deg) scale(1.07); filter: brightness(1.5); }
+  30%  { transform: translateX(-0.8vmin) rotate(-1deg); filter: brightness(1); }
+  45%  { transform: translateX(1.8vmin) rotate(2deg); }
+  60%  { transform: translateX(0); }
+}
+
+/* ==================================
+   JS ATTENTION EVENTS
+   Added by script.js to random signs.
+================================== */
+
+/* BURST: a sign swells, brightens and glows for a moment */
+.sign.is-burst { z-index: 50; }
+.sign.is-burst img {
+  transform: scale(1.18);
+  filter: brightness(1.7) saturate(2) drop-shadow(0 0 2.2vmin rgba(255, 214, 0, 0.85));
+}
+
+/* SHOUT: a quick scale-and-flash "LOOK AT ME" */
+.sign.is-shout { z-index: 60; }
+.sign.is-shout img {
+  animation: shout 0.55s ease-out 1;
+}
+@keyframes shout {
+  0%   { transform: scale(1);    filter: brightness(1)   saturate(1); }
+  20%  { transform: scale(1.25) rotate(-2deg); filter: brightness(1.9) saturate(2.2) drop-shadow(0 0 2.5vmin rgba(255, 214, 0, 0.9)); }
+  40%  { transform: scale(1.08) rotate(2deg);  filter: brightness(1.1) saturate(1.2); }
+  60%  { transform: scale(1.2)  rotate(-1deg); filter: brightness(1.8) saturate(2.2) drop-shadow(0 0 2.5vmin rgba(255, 214, 0, 0.9)); }
+  100% { transform: scale(1);    filter: brightness(1)   saturate(1); }
+}
+
+/* JOLT: a tiny, very fast twitch */
+.sign.is-jolt img {
+  animation: jolt 0.28s linear 1;
+}
+@keyframes jolt {
+  0%   { translate: 0 0; rotate: var(--rot, 0deg); }
+  20%  { translate: 0.8vmin -0.5vmin; rotate: calc(var(--rot, 0deg) - 3deg); }
+  40%  { translate: -0.8vmin 0.4vmin; rotate: calc(var(--rot, 0deg) + 3deg); }
+  60%  { translate: 0.6vmin 0.6vmin; rotate: calc(var(--rot, 0deg) - 2deg); }
+  80%  { translate: -0.5vmin -0.4vmin; rotate: calc(var(--rot, 0deg) + 2deg); }
+  100% { translate: 0 0; rotate: var(--rot, 0deg); }
+}
+
+/* ==================================
+   HOVER
+   Motion pauses so the viewer can focus.
+================================== */
+.sign:hover,
+.sign:focus-visible {
+  z-index: 100;
+  animation-play-state: paused;
+}
+.sign:hover img,
+.sign:focus-visible img {
+  transform: scale(1.12);
+  filter: brightness(1.35) saturate(1.3) drop-shadow(0 0 2vmin rgba(255, 214, 0, 0.7));
+}
+
+/* ==================================
+   CLICK / SELECTED STATE
+================================== */
+.stage.has-selection .sign { opacity: 0.25; }
+.stage.has-selection .sign.is-selected {
+  opacity: 1;
+  z-index: 200;
+  animation-play-state: paused;
+}
+.stage.has-selection .sign.is-selected img {
+  transform: scale(1.18);
+  filter: brightness(1.5) saturate(1.5) drop-shadow(0 0 3vmin rgba(255, 214, 0, 0.95));
+}
+body {
+  transition:
+    opacity 0.24s ease,
+    transform 0.24s ease;
+}
+
+body.page-exit {
+  opacity: 0;
+  transform: scale(0.99);
+}

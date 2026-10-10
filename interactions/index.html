@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Follow Instructions</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+<!-- =========================
+     NAVIGATION
+========================== -->
+
+<nav class="top-nav">
+
+  <a
+    href="../index.html"
+    class="nav-link"
+  >
+    <span class="nav-arrow">⬅</span>
+    <span>CHOOSE AGAIN</span>
+  </a>
+
+
+  <div class="nav-center">
+    FOLLOW INSTRUCTIONS
+  </div>
+
+
+  <a
+    href="../about/index.html"
+    class="nav-link"
+  >
+    <span>LOOK CLOSER</span>
+    <span class="nav-arrow nav-arrow-right">⬅</span>
+  </a>
+
+</nav>
+
+
+
+  <!-- =========================
+       MAIN INTERACTION AREA
+  ========================== -->
+
+  <main
+    class="interaction-stage"
+    id="interactionStage"
+  >
+
+    <!-- funny/error feedback -->
+    <div
+      class="feedback"
+      id="feedback"
+    ></div>
+
+
+    <!-- main content -->
+    <div
+      class="command-shell"
+      id="commandShell"
+    >
+
+      <img
+        src=""
+        alt=""
+        id="commandImage"
+        class="command-image"
+      >
+
+
+      <h1
+        id="instruction"
+        class="instruction"
+      ></h1>
+
+
+      <p
+        id="subInstruction"
+        class="sub-instruction"
+      ></p>
+
+
+      <div
+        id="timer"
+        class="timer"
+      ></div>
+
+
+      <button
+        id="actionButton"
+        class="action-button"
+        type="button"
+        hidden
+      >
+        CONTINUE
+      </button>
+
+    </div>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
