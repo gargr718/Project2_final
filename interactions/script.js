@@ -1205,10 +1205,6 @@ function renderKeepLeft() {
 // PULL
 // ==================================
 
-// ==================================
-// PULL
-// ==================================
-
 function renderPull() {
 
   shell.classList.add(
@@ -1224,28 +1220,6 @@ function renderPull() {
   image.classList.add(
     'can-interact'
   );
-
-
-  /*
-     RESERVE THE BUTTON'S SPACE
-     FROM THE BEGINNING.
-
-     THIS PREVENTS THE WHOLE CENTERED
-     LAYOUT FROM SHIFTING WHEN THE
-     BUTTON APPEARS LATER.
-  */
-
-  actionButton.hidden =
-    false;
-
-  actionButton.style.visibility =
-    'hidden';
-
-  actionButton.style.opacity =
-    '0';
-
-  actionButton.style.pointerEvents =
-    'none';
 
 
   // ==================================
@@ -1265,10 +1239,6 @@ function renderPull() {
       'You came here for something. Go on, pull it closer.';
 
 
-    actionButton.textContent =
-      'SEE WHERE THAT GOT YOU';
-
-
     image.onclick =
       () => {
 
@@ -1286,17 +1256,18 @@ function renderPull() {
         );
 
 
-        image.style.cursor =
-          'default';
+        /*
+           IMAGE GROWS FIRST
+        */
+
+        image.classList.add(
+          'pulled-in'
+        );
 
 
         /*
-           START FADING THE ORIGINAL
-           TEXT ALMOST IMMEDIATELY.
-
-           THIS MEANS "PULL" DOES NOT
-           SIT THERE WHILE THE IMAGE
-           IS ALREADY LARGE.
+           SHORT PAUSE
+           AFTER IMAGE BECOMES BIG
         */
 
         setTimeout(() => {
@@ -1310,31 +1281,18 @@ function renderPull() {
             'text-fade'
           );
 
-        }, 120);
+        }, 650);
 
 
         /*
-           GROW THE IMAGE SMOOTHLY.
-        */
-
-        image.classList.add(
-          'pulled-in'
-        );
-
-
-        /*
-           AFTER THE OLD COPY HAS
-           COMPLETELY FADED, REPLACE IT.
-
-           NON-BREAKING SPACE KEEPS THE
-           HEADING'S HEIGHT RESERVED,
-           SO NOTHING JUMPS.
+           THEN THE RESPONSE
+           FADES IN
         */
 
         setTimeout(() => {
 
           instruction.textContent =
-            '\u00A0';
+            '';
 
 
           subInstruction.textContent =
@@ -1350,22 +1308,23 @@ function renderPull() {
             'text-fade'
           );
 
-        }, 820);
+        }, 1150);
 
 
         /*
-           REVEAL BUTTON AFTER FINAL COPY
-           HAS BEEN VISIBLE FOR A MOMENT.
+           BUTTON COMES AFTER
+           THE RESPONSE HAS SAT
+           FOR A MOMENT
         */
 
         setTimeout(() => {
 
-          actionButton.style.visibility =
-            'visible';
+          actionButton.hidden =
+            false;
 
 
-          actionButton.style.pointerEvents =
-            'auto';
+          actionButton.textContent =
+            'SEE WHERE THAT GOT YOU';
 
 
           smoothButtonIn();
@@ -1374,16 +1333,10 @@ function renderPull() {
           actionButton.onclick =
             () => {
 
-              actionButton.style.visibility =
-                '';
-
-              actionButton.style.pointerEvents =
-                '';
-
               showFinal();
             };
 
-        }, 2050);
+        }, 2400);
       };
 
 
@@ -1403,10 +1356,6 @@ function renderPull() {
     'Changed your mind already? Fine, bring it back.';
 
 
-  actionButton.textContent =
-    'SEE WHAT THAT GOT YOU';
-
-
   image.onclick =
     () => {
 
@@ -1424,12 +1373,18 @@ function renderPull() {
       );
 
 
-      image.style.cursor =
-        'default';
+      /*
+         IMAGE GROWS FIRST
+      */
+
+      image.classList.add(
+        'pulled-in'
+      );
 
 
       /*
-         FADE EXISTING COPY FIRST.
+         SHORT PAUSE
+         AFTER IMAGE BECOMES BIG
       */
 
       setTimeout(() => {
@@ -1443,26 +1398,18 @@ function renderPull() {
           'text-fade'
         );
 
-      }, 120);
+      }, 650);
 
 
       /*
-         SMOOTH ENLARGE.
-      */
-
-      image.classList.add(
-        'pulled-in'
-      );
-
-
-      /*
-         FINAL COPY.
+         THEN THE RESPONSE
+         FADES IN
       */
 
       setTimeout(() => {
 
         instruction.textContent =
-          '\u00A0';
+          '';
 
 
         subInstruction.textContent =
@@ -1478,21 +1425,23 @@ function renderPull() {
           'text-fade'
         );
 
-      }, 820);
+      }, 1150);
 
 
       /*
-         BUTTON.
+         BUTTON COMES AFTER
+         THE RESPONSE HAS SAT
+         FOR A MOMENT
       */
 
       setTimeout(() => {
 
-        actionButton.style.visibility =
-          'visible';
+        actionButton.hidden =
+          false;
 
 
-        actionButton.style.pointerEvents =
-          'auto';
+        actionButton.textContent =
+          'SEE WHAT THAT GOT YOU';
 
 
         smoothButtonIn();
@@ -1501,16 +1450,10 @@ function renderPull() {
         actionButton.onclick =
           () => {
 
-            actionButton.style.visibility =
-              '';
-
-            actionButton.style.pointerEvents =
-              '';
-
             showFinal();
           };
 
-      }, 2050);
+      }, 2400);
     };
 }
 
