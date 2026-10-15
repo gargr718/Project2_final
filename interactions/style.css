@@ -570,7 +570,11 @@ body {
   transform:
     scale(0.45);
 
-  cursor: pointer;
+  transform-origin:
+    center center;
+
+  cursor:
+    pointer;
 }
 
 
@@ -578,23 +582,45 @@ body {
   transform:
     scale(1.3);
 
-  opacity: 1;
+  transform-origin:
+    center center;
+
+  opacity:
+    1;
 
   transition:
     transform 0.9s
-    cubic-bezier(.22,.61,.36,1);
+    cubic-bezier(.22,.61,.36,1),
+    opacity 0.55s ease;
+}
+
+
+/*
+   IMPORTANT:
+   KEEP THE HEADING SPACE RESERVED
+   EVEN WHEN "PULL" BECOMES BLANK.
+   THIS PREVENTS THE WHOLE FLEX GROUP
+   FROM RECENTERING AND MOVING THE SIGN.
+*/
+
+.command-shell.pull-position
+.instruction {
+  min-height:
+    32px;
 }
 
 
 .command-shell.pull-position
 .action-button {
-  margin-top: 18px;
+  margin-top:
+    18px;
 }
 
 
 .command-image.pulled-in
 + .instruction {
-  margin-top: 42px;
+  margin-top:
+    44px;
 }
 
 /* ==================================
