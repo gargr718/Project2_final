@@ -561,14 +561,59 @@ body {
 ================================== */
 
 .command-shell.pull-position {
+
+  /*
+     STILL SLIGHTLY OFF-CENTER,
+     BUT NOT JAMMED AGAINST THE LEFT.
+  */
+
   transform:
-    translateX(-16vw);
+    translate(-8vw, 24px);
 }
 
 
+/*
+   REMOVE THE EMPTY TIMER SPACE
+   THAT WAS CREATING THE MASSIVE
+   GAP ABOVE THE BUTTON.
+*/
+
+.command-shell.pull-position
+.timer {
+  min-height: 0;
+
+  margin-top: 0;
+}
+
+
+/*
+   KEEP HEADING SPACE CONSTANT
+   EVEN AFTER "PULL" DISAPPEARS.
+*/
+
+.command-shell.pull-position
+.instruction {
+  min-height: 32px;
+}
+
+
+/*
+   ALSO KEEP THE BODY COPY AREA
+   CONSISTENT SO COPY CHANGES
+   DO NOT RECENTER THE WHOLE GROUP.
+*/
+
+.command-shell.pull-position
+.sub-instruction {
+  min-height: 22px;
+}
+
+
+/* INITIAL SMALL SIGN */
+
 .command-image.pull-small {
   transform:
-    scale(0.45);
+    scale(0.48);
 
   transform-origin:
     center center;
@@ -578,9 +623,11 @@ body {
 }
 
 
+/* FINAL ENLARGED SIGN */
+
 .command-image.pulled-in {
   transform:
-    scale(1.3);
+    scale(1.12);
 
   transform-origin:
     center center;
@@ -589,38 +636,33 @@ body {
     1;
 
   transition:
-    transform 0.9s
-    cubic-bezier(.22,.61,.36,1),
+    transform 1s
+    cubic-bezier(.16, 1, .3, 1),
     opacity 0.55s ease;
 }
 
 
 /*
-   IMPORTANT:
-   KEEP THE HEADING SPACE RESERVED
-   EVEN WHEN "PULL" BECOMES BLANK.
-   THIS PREVENTS THE WHOLE FLEX GROUP
-   FROM RECENTERING AND MOVING THE SIGN.
+   BALANCED GAP BETWEEN
+   IMAGE AND COPY
 */
 
-.command-shell.pull-position
-.instruction {
-  min-height:
-    32px;
+.command-image.pulled-in
++ .instruction {
+  margin-top:
+    42px;
 }
 
+
+/*
+   BUTTON SHOULD SIT MUCH CLOSER
+   TO FINAL COPY.
+*/
 
 .command-shell.pull-position
 .action-button {
   margin-top:
     18px;
-}
-
-
-.command-image.pulled-in
-+ .instruction {
-  margin-top:
-    44px;
 }
 
 /* ==================================
