@@ -2801,30 +2801,187 @@ function renderNotice() {
   );
 
 
+  let noticeClicks =
+    0;
+
+
   image.onclick =
     (event) => {
 
       event.stopPropagation();
 
 
+      noticeClicks++;
+
+
+      // ==================================
+      // FIRST CLICK — SHAKE / TEASE
+      // ==================================
+
+      if (
+        noticeClicks === 1
+      ) {
+
+        /*
+           QUICK SHAKE WHILE THE SIGN
+           CONTINUES MOVING
+        */
+
+        image.animate(
+          [
+            {
+              rotate: '0deg',
+              scale: '1'
+            },
+
+            {
+              rotate: '-5deg',
+              scale: '1.04'
+            },
+
+            {
+              rotate: '5deg',
+              scale: '1.04'
+            },
+
+            {
+              rotate: '-4deg',
+              scale: '1.03'
+            },
+
+            {
+              rotate: '4deg',
+              scale: '1.02'
+            },
+
+            {
+              rotate: '0deg',
+              scale: '1'
+            }
+          ],
+
+          {
+            duration: 520,
+
+            easing:
+              'cubic-bezier(.22,.61,.36,1)'
+          }
+        );
+
+
+        /*
+           FADE ORIGINAL TEXT OUT
+        */
+
+        instruction.classList.add(
+          'text-fade'
+        );
+
+
+        subInstruction.classList.add(
+          'text-fade'
+        );
+
+
+        /*
+           CHANGE COPY
+        */
+
+        setTimeout(() => {
+
+          instruction.textContent =
+            'LOOK MORE CAREFULLY.';
+
+
+          subInstruction.textContent =
+            'There’s more to it.';
+
+
+          instruction.classList.remove(
+            'text-fade'
+          );
+
+
+          subInstruction.classList.remove(
+            'text-fade'
+          );
+
+        }, 500);
+
+
+        /*
+           SIGN KEEPS MOVING.
+           WAIT FOR SECOND CLICK.
+        */
+
+        return;
+      }
+
+
+      // ==================================
+      // SECOND CLICK — CAUGHT
+      // ==================================
+
       image.onclick =
         null;
-
-
-      image.classList.remove(
-        'notice-moving',
-        'can-interact'
-      );
-
-
-      image.classList.add(
-        'notice-caught'
-      );
 
 
       image.style.cursor =
         'default';
 
+
+      image.classList.remove(
+        'can-interact'
+      );
+
+
+      /*
+         FREEZE THE SIGN AT ITS CURRENT
+         VISUAL POSITION FIRST SO IT
+         DOESN'T SNAP WHEN THE SWEEP
+         ANIMATION IS REMOVED.
+      */
+
+      const currentTransform =
+        window.getComputedStyle(
+          image
+        ).transform;
+
+
+      image.style.transform =
+        currentTransform;
+
+
+      image.classList.remove(
+        'notice-moving'
+      );
+
+
+      /*
+         FORCE THE BROWSER TO REGISTER
+         THE CURRENT POSITION
+      */
+
+      void image.offsetWidth;
+
+
+      /*
+         NOW GLIDE BACK TO CENTER
+         SMOOTHLY
+      */
+
+      image.style.transition =
+        'transform 1.05s cubic-bezier(.16, 1, .3, 1)';
+
+
+      image.style.transform =
+        'translateX(0) scale(1.05)';
+
+
+      /*
+         LET THE SIGN TRAVEL BACK
+         BEFORE THE COPY STARTS CHANGING
+      */
 
       setTimeout(() => {
 
@@ -2837,8 +2994,12 @@ function renderNotice() {
           'text-fade'
         );
 
-      }, 500);
+      }, 750);
 
+
+      /*
+         FINAL RESPONSE
+      */
 
       setTimeout(() => {
 
@@ -2859,8 +3020,13 @@ function renderNotice() {
           'text-fade'
         );
 
-      }, 1050);
+      }, 1300);
 
+
+      /*
+         BUTTON AFTER THE RESPONSE
+         HAS HAD TIME TO SIT
+      */
 
       setTimeout(() => {
 
@@ -2881,10 +3047,9 @@ function renderNotice() {
             nextStep();
           };
 
-      }, 2700);
+      }, 2850);
     };
 }
-
 
 // ==================================
 // CAUTION

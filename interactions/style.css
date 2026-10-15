@@ -1136,14 +1136,20 @@ body {
 
   animation:
     noticeSweep
-    6s
+    5s
     ease-in-out
     infinite
     alternate;
+
+  will-change:
+    transform,
+    rotate,
+    scale;
 }
 
 
 @keyframes noticeSweep {
+
   from {
     transform:
       translateX(-20vw);
@@ -1156,12 +1162,23 @@ body {
 }
 
 
+/*
+   SECOND CLICK:
+   SIGN COMES BACK TO CENTER
+   WITH THE SAME SMALL ZOOM
+   YOU ALREADY HAD.
+*/
+
 .command-image.notice-caught {
   animation: none;
 
   transform:
     translateX(0)
     scale(1.05);
+
+  transition:
+    transform 0.8s
+    cubic-bezier(.22,.61,.36,1);
 }
 
 
